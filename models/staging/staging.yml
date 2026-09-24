@@ -1,0 +1,49 @@
+
+version: 2
+
+models:
+  - name: stg_customers
+    description: "customer master"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - active
+                - inactive
+
+
+  - name: stg_products
+    description: "product master table"
+    columns:
+          - name: PRODUCT_ID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: PRICE
+            description: "The product unit price"
+            tests:
+                - not_null
+
+  - name: stg_orders
+    description: "fact table"
+    columns:
+      - name: ORDER_ID
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: ORDER_DATE
+        description: "Purcahse date"
+        tests:
+          - not_null
+      - name: ORDER_AMOUNT
+        description: "Purachsed amount"
+        tests:
+          - not_null
