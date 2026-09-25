@@ -47,3 +47,9 @@ models:
         description: "Purachsed amount"
         tests:
           - not_null
+      - name: CUSTOMER_ID
+        description: "Customer ID with transactions"
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: CUSTOMER_ID
